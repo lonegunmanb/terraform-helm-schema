@@ -116,8 +116,11 @@ const helmRelease = `{
             {
               "app_version": "string",
               "chart": "string",
+              "first_deployed": "number",
+              "last_deployed": "number",
               "name": "string",
               "namespace": "string",
+              "notes": "string",
               "revision": "number",
               "values": "string",
               "version": "string"
