@@ -10,7 +10,7 @@ const helmRelease = `{
   "block": {
     "attributes": {
       "atomic": {
-        "description": "If set, installation process purges chart on fail. The wait flag will be set automatically if atomic is used",
+        "description": "If set, installation process purges chart on fail. The wait flag will be set automatically if atomic is used. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -22,19 +22,19 @@ const helmRelease = `{
         "type": "string"
       },
       "cleanup_on_fail": {
-        "description": "Allow deletion of new resources created in this upgrade when upgrade fails",
+        "description": "Allow deletion of new resources created in this upgrade when upgrade fails. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "create_namespace": {
-        "description": "Create the namespace if it does not exist",
+        "description": "Create the namespace if it does not exist. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "dependency_update": {
-        "description": "Run helm dependency update before installing the chart",
+        "description": "Run helm dependency update before installing the chart. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -58,19 +58,19 @@ const helmRelease = `{
         "type": "bool"
       },
       "disable_openapi_validation": {
-        "description": "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema",
+        "description": "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "disable_webhooks": {
-        "description": "Prevent hooks from running.",
+        "description": "Prevent hooks from running.Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "force_update": {
-        "description": "Force resource update through delete/recreate if needed.",
+        "description": "Force resource update through delete/recreate if needed. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -82,13 +82,13 @@ const helmRelease = `{
         "type": "string"
       },
       "keyring": {
-        "description": "Location of public keys used for verification. Used only if ` + "`" + `verify` + "`" + ` is true",
+        "description": "Location of public keys used for verification. Used only if ` + "`" + `verify` + "`" + ` is true. Defaults to ` + "`" + `/.gnupg/pubring.gpg` + "`" + ` in the location set by ` + "`" + `home` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "lint": {
-        "description": "Run helm lint when planning",
+        "description": "Run helm lint when planning. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -100,7 +100,7 @@ const helmRelease = `{
         "type": "string"
       },
       "max_history": {
-        "description": "Limit the maximum number of revisions saved per release. Use 0 for no limit",
+        "description": "Limit the maximum number of revisions saved per release. Use 0 for no limit. Defaults to 0 (no limit).",
         "description_kind": "plain",
         "optional": true,
         "type": "number"
@@ -135,31 +135,31 @@ const helmRelease = `{
         "type": "string"
       },
       "namespace": {
-        "description": "Namespace to install the release into.",
+        "description": "Namespace to install the release into. Defaults to ` + "`" + `default` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "pass_credentials": {
-        "description": "Pass credentials to all domains",
+        "description": "Pass credentials to all domains. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "recreate_pods": {
-        "description": "Perform pods restart during upgrade/rollback",
+        "description": "Perform pods restart during upgrade/rollback. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "render_subchart_notes": {
-        "description": "If set, render subchart notes along with the parent",
+        "description": "If set, render subchart notes along with the parent. Defaults to ` + "`" + `true` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "replace": {
-        "description": "Re-use the given name, even if that name is already used. This is unsafe in production",
+        "description": "Re-use the given name, even if that name is already used. This is unsafe in production. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -202,19 +202,19 @@ const helmRelease = `{
         "type": "string"
       },
       "reset_values": {
-        "description": "When upgrading, reset the values to the ones built into the chart",
+        "description": "When upgrading, reset the values to the ones built into the chart. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "reuse_values": {
-        "description": "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored",
+        "description": "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "skip_crds": {
-        "description": "If set, no CRDs will be installed. By default, CRDs are installed if not already present",
+        "description": "If set, no CRDs will be installed. By default, CRDs are installed if not already present. Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -226,7 +226,7 @@ const helmRelease = `{
         "type": "string"
       },
       "timeout": {
-        "description": "Time in seconds to wait for any individual kubernetes operation.",
+        "description": "Time in seconds to wait for any individual kubernetes operation. Defaults to 300 seconds.",
         "description_kind": "plain",
         "optional": true,
         "type": "number"
@@ -241,7 +241,7 @@ const helmRelease = `{
         ]
       },
       "verify": {
-        "description": "Verify the package before installing it.",
+        "description": "Verify the package before installing it.Defaults to ` + "`" + `false` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -254,13 +254,13 @@ const helmRelease = `{
         "type": "string"
       },
       "wait": {
-        "description": "Will wait until all resources are in a ready state before marking the release as successful.",
+        "description": "Will wait until all resources are in a ready state before marking the release as successful. Defaults to ` + "`" + `true` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "wait_for_jobs": {
-        "description": "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful.",
+        "description": "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. Defaults to ` + "`" + `false` + "`" + `` + "`" + `.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -333,7 +333,7 @@ const helmRelease = `{
               ]
             }
           },
-          "description": "Custom sensitive values to be merged with the values.",
+          "description": "Custom list values to be merged with the values.",
           "description_kind": "plain"
         },
         "nesting_mode": "list"
