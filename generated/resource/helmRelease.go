@@ -231,6 +231,12 @@ const helmRelease = `{
         "optional": true,
         "type": "number"
       },
+      "upgrade_install": {
+        "description": "If true, the provider will install the release at the specified version even if a release not controlled by the provider is present: this is equivalent to running 'helm upgrade --install' with the Helm CLI. WARNING: this may not be suitable for production use -- see the 'Upgrade Mode' note in the provider documentation. Defaults to ` + "`" + `false` + "`" + `.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "values": {
         "description": "List of values in raw yaml format to pass to helm.",
         "description_kind": "plain",
