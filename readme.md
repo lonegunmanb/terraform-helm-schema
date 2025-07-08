@@ -20,7 +20,7 @@ Then you can read schemas like this:
 import (
 "testing"
 
-"github.com/lonegunmanb/terraform-helm-schema/v2/generated"
+"github.com/lonegunmanb/terraform-helm-schema/v3/generated"
 "github.com/stretchr/testify/assert"
 )
 

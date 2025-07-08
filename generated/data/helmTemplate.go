@@ -10,7 +10,7 @@ const helmTemplate = `{
   "block": {
     "attributes": {
       "api_versions": {
-        "description": "Kubernetes api versions used for Capabilities.APIVersions",
+        "description": "Kubernetes api versions used for Capabilities.APIVersions.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -19,7 +19,7 @@ const helmTemplate = `{
         ]
       },
       "atomic": {
-        "description": "If set, installation process purges chart on fail. The wait flag will be set automatically if atomic is used. Defaults to ` + "`" + `false` + "`" + `.",
+        "description": "If set, the installation process purges the chart on fail. The 'wait' flag will be set automatically if 'atomic' is used.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -41,37 +41,37 @@ const helmTemplate = `{
         ]
       },
       "create_namespace": {
-        "description": "Create the namespace if it does not exist. Defaults to ` + "`" + `false` + "`" + `.",
+        "description": "Create the namespace if it does not exist.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "dependency_update": {
-        "description": "Run helm dependency update before installing the chart. Defaults to ` + "`" + `false` + "`" + `.",
+        "description": "Run helm dependency update before installing the chart.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "description": {
-        "description": "Add a custom description",
+        "description": "Add a custom description.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "devel": {
-        "description": "Use chart development versions, too. Equivalent to version '\u003e0.0.0-0'. If ` + "`" + `version` + "`" + ` is set, this is ignored",
+        "description": "Use chart development versions, too. Equivalent to version '\u003e0.0.0-0'. If ` + "`" + `version` + "`" + ` is set, this is ignored.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "disable_openapi_validation": {
-        "description": "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema.Defaults to ` + "`" + `false` + "`" + `.",
+        "description": "If set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "disable_webhooks": {
-        "description": "Prevent hooks from running.Defaults to ` + "`" + `300` + "`" + ` seconds.",
+        "description": "Prevent hooks from running.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -79,29 +79,28 @@ const helmTemplate = `{
       "id": {
         "computed": true,
         "description_kind": "plain",
-        "optional": true,
         "type": "string"
       },
       "include_crds": {
-        "description": "Include CRDs in the templated output",
+        "description": "Include CRDs in the templated output.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "is_upgrade": {
-        "description": "Set .Release.IsUpgrade instead of .Release.IsInstall",
+        "description": "Set .Release.IsUpgrade instead of .Release.IsInstall.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "keyring": {
-        "description": "Location of public keys used for verification. Used only if ` + "`" + `verify` + "`" + ` is true. Defaults to ` + "`" + `/.gnupg/pubring.gpg` + "`" + ` in the location set by ` + "`" + `home` + "`" + `.",
+        "description": "Location of public keys used for verification. Used only if ` + "`" + `verify` + "`" + ` is true.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "kube_version": {
-        "description": "Kubernetes version used for Capabilities.KubeVersion",
+        "description": "Kubernetes version used for Capabilities.KubeVersion.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -124,13 +123,13 @@ const helmTemplate = `{
         ]
       },
       "name": {
-        "description": "Release name.",
+        "description": "Release name",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "namespace": {
-        "description": "Namespace to install the release into. Defaults to ` + "`" + `default` + "`" + `.",
+        "description": "Namespace to install the release into.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -143,43 +142,68 @@ const helmTemplate = `{
         "type": "string"
       },
       "pass_credentials": {
-        "description": "Pass credentials to all domains. Defaults to ` + "`" + `false` + "`" + `.",
+        "description": "Pass credentials to all domains",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
+      "postrender": {
+        "description": "Postrender command config",
+        "description_kind": "plain",
+        "nested_type": {
+          "attributes": {
+            "args": {
+              "description": "An argument to the post-renderer (can specify multiple)",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "binary_path": {
+              "description": "The common binary path",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "nesting_mode": "single"
+        },
+        "optional": true
+      },
       "render_subchart_notes": {
-        "description": "If set, render subchart notes along with the parent. Defaults to ` + "`" + `true` + "`" + `.",
+        "description": "If set, render subchart notes along with the parent.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "replace": {
-        "description": "Re-use the given name, even if that name is already used. This is unsafe in production. Defaults to ` + "`" + `false` + "`" + `.",
+        "description": "Re-use the given name, even if that name is already used. This is unsafe in production.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "repository": {
-        "description": "Repository where to locate the requested chart. If is a URL the chart is installed without installing the repository.",
+        "description": "Repository where to locate the requested chart. If it is a URL the chart is installed without installing the repository.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "repository_ca_file": {
-        "description": "The Repositories CA File",
+        "description": "The repository's CA file",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "repository_cert_file": {
-        "description": "The repositories cert file",
+        "description": "The repository's cert file",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "repository_key_file": {
-        "description": "The repositories cert key file",
+        "description": "The repository's cert key file",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -198,98 +222,21 @@ const helmTemplate = `{
         "type": "string"
       },
       "reset_values": {
-        "description": "When upgrading, reset the values to the ones built into the chart.Defaults to ` + "`" + `false` + "`" + `. ",
+        "description": "When upgrading, reset the values to the ones built into the chart.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
       },
       "reuse_values": {
-        "description": "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored. Defaults to ` + "`" + `false` + "`" + `. ",
+        "description": "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
-      },
-      "show_only": {
-        "description": "Only show manifests rendered from the given templates",
-        "description_kind": "plain",
-        "optional": true,
-        "type": [
-          "list",
-          "string"
-        ]
-      },
-      "skip_crds": {
-        "description": "If set, no CRDs will be installed. By default, CRDs are installed if not already present. Defaults to ` + "`" + `false` + "`" + `.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      },
-      "skip_tests": {
-        "description": "If set, tests will not be rendered. By default, tests are rendered. Defaults to ` + "`" + `false` + "`" + `.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      },
-      "timeout": {
-        "description": "Time in seconds to wait for any individual kubernetes operation. Defaults to ` + "`" + `300` + "`" + ` seconds.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "number"
-      },
-      "validate": {
-        "description": "Validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      },
-      "values": {
-        "description": "List of values in raw yaml format to pass to helm.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": [
-          "list",
-          "string"
-        ]
-      },
-      "verify": {
-        "description": "Verify the package before installing it.Defaults to ` + "`" + `false` + "`" + `.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      },
-      "version": {
-        "computed": true,
-        "description": "Specify the exact chart version to install. If this is not specified, the latest version is installed.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
-      "wait": {
-        "description": "Will wait until all resources are in a ready state before marking the release as successful.Defaults to ` + "`" + `true` + "`" + `.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      }
-    },
-    "block_types": {
-      "postrender": {
-        "block": {
-          "attributes": {
-            "binary_path": {
-              "description": "The command binary path.",
-              "description_kind": "plain",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "description": "Postrender command configuration.",
-          "description_kind": "plain"
-        },
-        "max_items": 1,
-        "nesting_mode": "list"
       },
       "set": {
-        "block": {
+        "description": "Custom values to be merged with the values",
+        "description_kind": "plain",
+        "nested_type": {
           "attributes": {
             "name": {
               "description_kind": "plain",
@@ -297,27 +244,29 @@ const helmTemplate = `{
               "type": "string"
             },
             "type": {
+              "computed": true,
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "value": {
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             }
           },
-          "description": "Custom values to be merged with the values.",
-          "description_kind": "plain"
+          "nesting_mode": "set"
         },
-        "nesting_mode": "set"
+        "optional": true
       },
       "set_list": {
-        "block": {
+        "description": "Custom sensitive values to be merged with the values",
+        "description_kind": "plain",
+        "nested_type": {
           "attributes": {
             "name": {
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             },
             "value": {
@@ -329,13 +278,14 @@ const helmTemplate = `{
               ]
             }
           },
-          "description": "Custom list values to be merged with the values.",
-          "description_kind": "plain"
+          "nesting_mode": "list"
         },
-        "nesting_mode": "list"
+        "optional": true
       },
       "set_sensitive": {
-        "block": {
+        "description": "Custom sensitive values to be merged with the values",
+        "description_kind": "plain",
+        "nested_type": {
           "attributes": {
             "name": {
               "description_kind": "plain",
@@ -354,32 +304,73 @@ const helmTemplate = `{
               "type": "string"
             }
           },
-          "description": "Custom sensitive values to be merged with the values.",
-          "description_kind": "plain"
+          "nesting_mode": "set"
         },
-        "nesting_mode": "set"
+        "optional": true
       },
-      "set_string": {
-        "block": {
-          "attributes": {
-            "name": {
-              "description_kind": "plain",
-              "required": true,
-              "type": "string"
-            },
-            "value": {
-              "description_kind": "plain",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "deprecated": true,
-          "description": "Custom string values to be merged with the values.",
-          "description_kind": "plain"
-        },
-        "nesting_mode": "set"
+      "show_only": {
+        "description": "Only show manifests rendered from the given templates.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
+      "skip_crds": {
+        "description": "If set, no CRDs will be installed. By default, CRDs are installed if not already present.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "skip_tests": {
+        "description": "If set, tests will not be rendered. By default, tests are rendered.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "timeout": {
+        "description": "Time in seconds to wait for any individual Kubernetes operation.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
+      },
+      "validate": {
+        "description": "Validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "values": {
+        "description": "List of values in raw yaml format to pass to helm.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
+      "verify": {
+        "description": "Verify the package before installing it.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "version": {
+        "computed": true,
+        "description": "Specify the exact chart version to install. If this is not specified, the latest version is installed.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "wait": {
+        "description": "Will wait until all resources are in a ready state before marking the release as successful.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       }
     },
+    "description": "Data source to render Helm chart templates.",
     "description_kind": "plain"
   },
   "version": 0
