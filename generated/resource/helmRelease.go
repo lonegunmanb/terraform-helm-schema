@@ -295,6 +295,15 @@ const helmRelease = `{
         "optional": true,
         "type": "bool"
       },
+      "resources": {
+        "computed": true,
+        "description": "The kubernetes resources created by this release.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "reuse_values": {
         "computed": true,
         "description": "When upgrading, reuse the last release's values and merge in any overrides. If 'reset_values' is specified, this is ignored",
@@ -425,12 +434,59 @@ const helmRelease = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "take_ownership": {
+        "computed": true,
+        "description": "If set, Helm will take ownership of resources not already annotated by this release. Useful for migrations or recovery.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "timeout": {
         "computed": true,
         "description": "Time in seconds to wait for any individual kubernetes operation",
         "description_kind": "plain",
         "optional": true,
         "type": "number"
+      },
+      "timeouts": {
+        "description_kind": "plain",
+        "nested_type": {
+          "attributes": {
+            "create": {
+              "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "delete": {
+              "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "read": {
+              "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
+              "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "nesting_mode": "single"
+        },
+        "optional": true
+      },
+      "upgrade_install": {
+        "computed": true,
+        "description": "If true, the provider will install the release at the specified version even if a release not controlled by the provider is present. This is equivalent to running 'helm upgrade --install'. WARNING: this may not be suitable for production use -- see the 'Upgrade Mode' note in the provider documentation. Defaults to ` + "`" + `false` + "`" + `.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "values": {
         "description": "List of values in raw YAML format to pass to helm",

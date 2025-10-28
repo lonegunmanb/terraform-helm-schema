@@ -308,6 +308,31 @@ const helmTemplate = `{
         },
         "optional": true
       },
+      "set_wo": {
+        "description": "Write-only custom values to be merged with the values.",
+        "description_kind": "plain",
+        "nested_type": {
+          "attributes": {
+            "name": {
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "type": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "value": {
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "nesting_mode": "list"
+        },
+        "optional": true
+      },
       "show_only": {
         "description": "Only show manifests rendered from the given templates.",
         "description_kind": "plain",
@@ -334,6 +359,21 @@ const helmTemplate = `{
         "description_kind": "plain",
         "optional": true,
         "type": "number"
+      },
+      "timeouts": {
+        "description_kind": "plain",
+        "nested_type": {
+          "attributes": {
+            "read": {
+              "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "nesting_mode": "single"
+        },
+        "optional": true
       },
       "validate": {
         "description": "Validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install.",
